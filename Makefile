@@ -1,6 +1,6 @@
 CFLAGS = -Wall
 
-BIN = ${HOME}/bin
+BIN = ./bin
 
 all: sac2col sacch saclh sacmax clean
 

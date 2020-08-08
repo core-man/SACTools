@@ -30,7 +30,10 @@ int main(int argc, char *argv[])
 {
     int c, i;
     int cols = 1;
-    char sacfile[80];
+    /* revised by Jiayuan on Aug 4 to accept long file name */
+    /*char sacfile[80];*/
+    char sacfile[256];
+    /* till here */
     float *xdata = NULL;
     float *ydata = NULL;
     SACHEAD hd;
