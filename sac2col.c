@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 {
     int c, i;
     int cols = 1;
-    /* revised by Jiayuan on Aug 4 to accept long file name */
+    /* revised by Jiayuan Yao to accept long file name, Aug. 4 2020 */
     /*char sacfile[80];*/
     char sacfile[256];
     /* till here */

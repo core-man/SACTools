@@ -1,4 +1,6 @@
 
+- [ ] sacstack: stack sac waveforms in a file list
+
 - [ ] find average/RMS amplitude, which can be used to calculate SNR
 
 - [ ] find arrival time of the maximum/minmum amplitudes

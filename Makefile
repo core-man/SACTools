@@ -1,8 +1,9 @@
 CFLAGS = -Wall
+SACLIB = /opt/SAC/lib
 
 BIN = ./bin
 
-all: sac2col sacch saclh sacmax clean
+all: sac2col sacch saclh sacmax sacstack clean
 
 sac2col: sac2col.o sacio.o
 	$(CC) -o $(BIN)/$@ $^
@@ -15,6 +16,9 @@ saclh: saclh.o sacio.o
 
 sacmax: sacmax.o sacio.o
 	$(CC) -o $(BIN)/$@ $^
+
+sacstack: sacstack.o sacio.o
+	$(CC) -o $(BIN)/$@ $^ -lm -L$(SACLIB) -lsac -lsacio
 
 clean:
 	rm *.o
