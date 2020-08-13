@@ -13,6 +13,9 @@
 #include <unistd.h>
 #include "sacio.h"
 
+/* revised by Jiayuan Yao to accept long file name, Aug. 4 2020 */
+#define MAX_FNAME  256
+
 void usage(void);
 
 void usage(){
@@ -30,10 +33,7 @@ int main(int argc, char *argv[])
 {
     int c, i;
     int cols = 1;
-    /* revised by Jiayuan Yao to accept long file name, Aug. 4 2020 */
-    /*char sacfile[80];*/
-    char sacfile[256];
-    /* till here */
+    char sacfile[MAX_FNAME];
     float *xdata = NULL;
     float *ydata = NULL;
     SACHEAD hd;
