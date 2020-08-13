@@ -17,6 +17,9 @@
 #include "sacio.h"
 #include "datetime.h"
 
+/* revised by Jiayuan Yao to accept long file name, Aug. 4 2020 */
+#define MAX_FNAME  256
+
 void usage(void);
 void datetime_undef(DATETIME *dt);
 DATETIME datetime_read(char *string);
@@ -85,7 +88,7 @@ int main(int argc, char *argv[])
     float vallt = 0.0;
 
     float *data;
-    char sacfile[80];
+    char sacfile[MAX_FNAME];
     SACHEAD hd;
 
     char args[80];
