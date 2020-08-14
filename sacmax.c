@@ -50,8 +50,8 @@ int main(int argc, char *argv[])
         switch (c) {
             case 'M':
                 if (sscanf(optarg, "%d", &mode) != 1) error++;
-                if (mode<0 || mode>4) {
-                    fprintf(stderr, "ERROR: mode is 0, 1, 2, 4.\n");
+                if (mode<0 || mode>7) {
+                    fprintf(stderr, "ERROR: mode is 0, 1, 2, 3, 4, 5, 6, 7.\n");
                     error++;
                 }
                 break;
@@ -116,7 +116,7 @@ int main(int argc, char *argv[])
             for (j=0; j<hd.npts; j++) value += data[j];
             value /= hd.npts;
         } else if (mode == 6) { /* root-mean-square (RMS) amplitude */
-            value = 0;  /* initialization */
+            value = 0.0;  /* initialization */
             for (j=0; j<hd.npts; j++) value += pow(data[j], 2);
             value = sqrt(value / hd.npts);
         } else if (mode == 7) { /* amplitude standard deviation */
