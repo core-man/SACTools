@@ -97,9 +97,12 @@ Usage:
     -M2   return maximum absolute amplitude
     -M3   return absolute maximum amplitude
     -M4   return maximum peak-to-peak amplitude
+    -M5   return average amplitude
+    -M6   return root-mean-square (RMS) amplitude
+    -M7   return amplitude standard deviation
     -T    specify time window.
     -h    show usage.
-```
 
 Examples:
    sacmax -M0 -T0/5/10 seis1
+```
