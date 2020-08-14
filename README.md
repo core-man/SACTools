@@ -20,6 +20,8 @@
 - [saclh](#saclh): List the values of selected head fields.
 - [sacch](#sacch): Change the value of selected head fields.
 - [sacmax](#sacmax): Get max amplitude of SAC files in a specified time window.
+- [sacstack](#sacstack): Stack SAC files in a specified time window.
+
 
 ### `sac2col`
 
