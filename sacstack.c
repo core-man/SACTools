@@ -35,14 +35,14 @@ void usage() {
     fprintf(stderr, "Stack SAC files in a specified time window.        \n");
     fprintf(stderr, "                                                   \n");
     fprintf(stderr, "Usage:                                             \n");
-    fprintf(stderr, "  sacstack [-Ddatalist] [-Ttmark/ts/tw] [-Ooutifle]\n");
-    fprintf(stderr, "           [-Nnorm/ts/tw]                          \n");
+    fprintf(stderr, "  sacstack [-Ddatalist] [-Ttmark/ts/tw]            \n");
+    fprintf(stderr, "           [-Nnorm/ts/tw] [-Ooutifle]              \n");
     fprintf(stderr, "                                                   \n");
     fprintf(stderr, "Options:                                           \n");
     fprintf(stderr, "  -D: data list                                    \n");
     fprintf(stderr, "  -T: tmark/begin time (sec)/time window (sec)     \n");
-    fprintf(stderr, "  -O: output file                                  \n");
     fprintf(stderr, "  -N: normalization(1: yes; 0: no)/begin time (sec)/time window (sec)\n");
+    fprintf(stderr, "  -O: output file                                  \n");
     fprintf(stderr, "  -h: show usage                                   \n");
 }
 
@@ -77,13 +77,13 @@ int main(int argc, char *argv[])
 		        if (sscanf(optarg, "%d/%f/%f", &tmark, &ts_stack, &tw_stack) != 3)
                     error++;
 			    break;
-			case 'O':
-	    	    sscanf(optarg, "%s", outfile);
-			    break;
 			case 'N':
 		        if (sscanf(optarg, "%d/%f/%f", &norm, &ts_norm, &tw_norm) != 3)
                     error++;
 	    	    break;
+			case 'O':
+	    	    sscanf(optarg, "%s", outfile);
+			    break;
             case 'h':
                 usage();
                 return -1;
@@ -98,6 +98,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
+    fprintf(stdout, "%s\n", outfile);
 
     /*********** Read Data Part ***********/
     /* get file line number */
@@ -166,7 +167,11 @@ int main(int argc, char *argv[])
 
     /* stack waveforms */
 	for (i=0; i<npts_stack; i++) data_stack[i] = 0.0;
-	sac_stack(len, data, npts, b, depmin, depmax, delta, IV, npts_stack, data_stack, ts_stack);
+
+	if (sac_stack(len,data,npts,b,depmin,depmax,delta,
+                  IV,npts_stack,data_stack,ts_stack) < 1) {
+        fprintf(stderr, "NO waveforms to be used!!!\n");
+    }
 
     /* output stacked waveform */
 	/* delta=delta[0]
@@ -194,12 +199,14 @@ int main(int argc, char *argv[])
 
 
 /* **************************************************** */
+/* *****************  subroutines ********************* */
 /* **************************************************** */
 
 /*
  * get file line number
  */
-int get_file_line(char *fname) {
+int get_file_line(char *fname)
+{
     int line_num=0;
     char c;
     FILE *fp;
@@ -223,7 +230,8 @@ int get_file_line(char *fname) {
 /*
  * read file into variables
  */
-int read_file(char *fname, int line_num, IVAL *IV) {
+int read_file(char *fname, int line_num, IVAL *IV)
+{
     int i;
     FILE *fp;
 
@@ -250,16 +258,16 @@ int read_file(char *fname, int line_num, IVAL *IV) {
 /*
  * read SAC headers and data
  */
-int read_sac_data(IVAL *IV,
-                  int len,
+int read_sac_data(IVAL  *IV,
+                  int   len,
                   float **data,
-                  int *npts,
+                  int   *npts,
                   float *b,
                   float *depmin,
                   float *depmax,
                   float *delta,
                   float *tt,
-                  int tmark)
+                  int   tmark)
 {
 	int i;
 	SACHEAD hdr;
@@ -273,8 +281,6 @@ int read_sac_data(IVAL *IV,
 		depmax[i] = hdr.depmax;
 		delta[i]  = hdr.delta;
         tt[i]     = *((float *) &hdr + TMARK + tmark);
-        //fprintf(stdout, "npts: %d\n", npts[i]);
-        //fprintf(stdout, "tt: %f\n", tt[i]);
     }
 
     return(1);
@@ -284,16 +290,19 @@ int read_sac_data(IVAL *IV,
 /*
  * normalize data
  */
-int sac_norm(IVAL *IV, int len, float **data, int *npts, float *b,
-			 float *delta, float ts, float tw_norm)
+int sac_norm(IVAL  *IV,
+             int   len,
+             float **data,
+             int   *npts,
+             float *b,
+			 float *delta,
+             float ts,
+             float tw_norm)
 {
 	int i,j,k;
     int ns,nwin;
 	float ts_rel;
 	double sum;
-
-    /* time window for normalization */
-    //tw_norm = 15;
 
 	for (i=0; i<len; i++) {
 		ts_rel = (IV[i].tt + ts) - b[i];
@@ -319,14 +328,22 @@ int sac_norm(IVAL *IV, int len, float **data, int *npts, float *b,
 /*
  * stack SAC waveforms
  */
-int sac_stack(int len, float **data, int *npts, float *b, float *depmin,
-              float *depmax, float *delta, IVAL *IV, int num, float *data_stack,
+int sac_stack(int   len,
+              float **data,
+              int   *npts,
+              float *b,
+              float *depmin,
+              float *depmax,
+              float *delta,
+              IVAL  *IV,
+              int   num,
+              float *data_stack,
               float ts_stack)
 {
 	int i,j,k;
-    //int nd;
 	int ns=0, sta_num=0;
 	float ts_rel;
+    //int nd;
     //float nth=4;
 
     for (i=0; i<len; i++) {
