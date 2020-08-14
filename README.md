@@ -106,3 +106,24 @@ Usage:
 Examples:
    sacmax -M0 -T0/5/10 seis1
 ```
+
+
+### `sacstack`
+
+```
+Stack SAC files in a specified time window
+
+Usage:
+  sacstack -Ddatalist -Ttmark/ts/tw -Nnorm/ts/tw -Ooutifle
+
+  Options:
+    -D    data list (each row: file  reference-time)
+    -T    specify time window (tmark is not used in the current version)
+    -N    normalization (1: yes; 0: no) with maximum amplitude in the specific time window
+    -O    output file
+    -h    show usage.
+
+Examples:
+   sacstack -Ddatalist -T1/-5/30 -N0/-5/30 -Ostack.sac
+```
+
