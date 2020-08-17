@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     error = 0;
     while ((c = getopt(argc, argv, "D:T:h")) != -1) {
         switch(c) {
-			case 'T':
+            case 'T':
                 if (sscanf(optarg, "%f/%d/%f/%f", &t, &tmark, &t0, &t1) == 4) {
                     cut = 1;
                 } else if (sscanf(optarg, "%f", &t) == 1) {
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
             case 'h':
                 usage();
                 return -1;
-        	default:
+            default:
                 usage();
                 return -1;
         }
