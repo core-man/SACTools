@@ -137,12 +137,14 @@ Examples:
 Get amplitude at the given time
 
 Usage:
+  sacamp -Tt[tmark/t0/t1] sacfiles
 
   Options:
-    -T    specify travel time and/or time window (tmark/begin time (sec)/time window (sec))
+    -T    specify travel time and/or time window (tmark/begin time (sec)/end time (sec))
     -h    show usage.
 
 Examples:
    sacamp -T400 seis.sac
+   sacamp -T400/1/-200/200 seis.sac
 ```
 
