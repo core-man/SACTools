@@ -15,8 +15,8 @@
 #include <malloc.h>
 #include <math.h>
 #include "sacio.h"
+#include "para.h"
 
-#define MAX_FNAME  256
 
 typedef struct initial_vals
 {

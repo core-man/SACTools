@@ -14,9 +14,7 @@
 #include <float.h>
 #include <math.h>
 #include "sacio.h"
-
-#define MAX_FNAME  256
-
+#include "para.h"
 
 void usage(void);
 

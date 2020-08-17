@@ -5,16 +5,14 @@
  *
  *  Revisions:
  *      2014-08-13  Dongdong Tian   Initial Coding.
- *
+ *      2020-08-04  Jiayuan Yao     change maximum file length
  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include "sacio.h"
-
-/* revised by Jiayuan Yao to accept long file name, Aug. 4 2020 */
-#define MAX_FNAME  256
+#include "para.h"
 
 void usage(void);
 

@@ -8,6 +8,7 @@
  *    2014-08-25  Dongdong Tian   Features:
  *                                1. value of time variables can be DATETIME format
  *                                2. add allt option.
+ *    2020-08-04  Jiayuan Yao     change maximum file length
  *
  */
 #include <stdio.h>
@@ -16,9 +17,7 @@
 #include <math.h>
 #include "sacio.h"
 #include "datetime.h"
-
-/* revised by Jiayuan Yao to accept long file name, Aug. 4 2020 */
-#define MAX_FNAME  256
+#include "para.h"
 
 void usage(void);
 void datetime_undef(DATETIME *dt);
