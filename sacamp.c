@@ -49,13 +49,6 @@ int main(int argc, char *argv[])
                 } else {
                     error++;
                 }
-/*
-                if (sscanf(optarg, "%d/%f/%f", &tmark, &t0, &t1) != 3) {
-                    error++;
-                } else {
-                    cut = 1;
-                }
-                */
                 break;
             case 'h':
                 usage();
