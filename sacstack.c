@@ -192,7 +192,7 @@ int main(int argc, char *argv[])
 	free(data);
     free(data_stack);
 
-    return(1);
+    return 0;
 }
 
 
@@ -283,7 +283,7 @@ int read_sac_data(IVAL  *IV,
         tt[i]     = *((float *) &hdr + TMARK + tmark);
     }
 
-    return(1);
+    return 0;
 }
 
 
@@ -321,7 +321,7 @@ int sac_norm(IVAL  *IV,
 			data[i][j] /= sum;
 	}
 
-	return 1;
+	return 0;
 }
 
 

@@ -1,5 +1,6 @@
 
-- [ ] find average/RMS amplitude, which can be used to calculate SNR
+- get arrival time: similar to my pick-phase.c
+    - maximum/minmum amplitude
+    - given amplitude
 
-- [ ] find arrival time of the maximum/minmum amplitudes
 

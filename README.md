@@ -21,6 +21,7 @@
 - [sacch](#sacch): Change the value of selected head fields.
 - [sacmax](#sacmax): Get max amplitude of SAC files in a specified time window.
 - [sacstack](#sacstack): Stack SAC files in a specified time window.
+- [sacamp](#sacstack): Get amplitude at the given time.
 
 
 ### `sac2col`
@@ -127,5 +128,21 @@ Usage:
 
 Examples:
    sacstack -Ddatalist -T1/-5/30 -N0/-5/30 -Ostack.sac
+```
+
+
+### `sacamp`
+
+```
+Get amplitude at the given time
+
+Usage:
+
+  Options:
+    -T    specify travel time and/or time window (tmark/begin time (sec)/time window (sec))
+    -h    show usage.
+
+Examples:
+   sacamp -T400 seis.sac
 ```
 
