@@ -4,3 +4,7 @@
     - absolute maximum amplitude
     - given amplitude
 
+- check sacio.c
+    - `read_sac_pwd` misses 1 point ???
+
+
