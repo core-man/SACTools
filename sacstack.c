@@ -15,7 +15,7 @@
 #include <malloc.h>
 #include <math.h>
 #include "sacio.h"
-#include "para.h"
+#include "const.h"
 
 
 typedef struct initial_vals

@@ -12,7 +12,7 @@
 #include <string.h>
 #include <unistd.h>
 #include "sacio.h"
-#include "para.h"
+#include "const.h"
 
 void usage(void);
 
