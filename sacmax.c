@@ -29,8 +29,9 @@ void usage() {
     fprintf(stderr, "  -M3   return absolute maximum amplitude                 \n");
     fprintf(stderr, "  -M4   return maximum peak-to-peak amplitude             \n");
     fprintf(stderr, "  -M5   return average amplitude                          \n");
-    fprintf(stderr, "  -M6   return root-mean-square (RMS) amplitude           \n");
-    fprintf(stderr, "  -M7   return amplitude standard deviation               \n");
+    fprintf(stderr, "  -M6   return average abosulte amplitude                          \n");
+    fprintf(stderr, "  -M7   return root-mean-square (RMS) amplitude           \n");
+    fprintf(stderr, "  -M8   return amplitude standard deviation               \n");
     fprintf(stderr, "  -T    specify time window.                              \n");
     fprintf(stderr, "  -h    show usage.                                       \n");
 }
@@ -115,11 +116,15 @@ int main(int argc, char *argv[])
             value = 0;  /* initialization */
             for (j=0; j<hd.npts; j++) value += data[j];
             value /= hd.npts;
-        } else if (mode == 6) { /* root-mean-square (RMS) amplitude */
+        } else if (mode == 6) { /* average absolute amplitude */
+            value = 0;  /* initialization */
+            for (j=0; j<hd.npts; j++) value += fabs(data[j]);
+            value /= hd.npts;
+        } else if (mode == 7) { /* root-mean-square (RMS) amplitude */
             value = 0.0;  /* initialization */
             for (j=0; j<hd.npts; j++) value += pow(data[j], 2);
             value = sqrt(value / hd.npts);
-        } else if (mode == 7) { /* amplitude standard deviation */
+        } else if (mode == 8) { /* amplitude standard deviation */
             avg = 0;  /* initialization */
             for (j=0; j<hd.npts; j++) avg += data[j];
             avg /= hd.npts;
