@@ -101,8 +101,9 @@ Usage:
     -M3   return absolute maximum amplitude
     -M4   return maximum peak-to-peak amplitude
     -M5   return average amplitude
-    -M6   return root-mean-square (RMS) amplitude
-    -M7   return amplitude standard deviation
+    -M6   return average abosulte amplitude
+    -M7   return root-mean-square (RMS) amplitude
+    -M8   return amplitude standard deviation
     -T    specify time window.
     -h    show usage.
 
