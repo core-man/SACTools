@@ -22,7 +22,7 @@ void usage() {
     fprintf(stderr, "Get amplitude at the given time.                   \n");
     fprintf(stderr, "                                                   \n");
     fprintf(stderr, "Usage:                                             \n");
-    fprintf(stderr, "  sacstack -Tt[/tmark/ts/tw]                       \n");
+    fprintf(stderr, "  sacamp -Tt[/tmark/ts/tw]                         \n");
     fprintf(stderr, "                                                   \n");
     fprintf(stderr, "Options:                                           \n");
     fprintf(stderr, "  -T: arrival time [/tmark/begin time (sec)/time window (sec)     \n");
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     int i;
 
     error = 0;
-    while ((c = getopt(argc, argv, "D:T:h")) != -1) {
+    while ((c = getopt(argc, argv, "T:h")) != -1) {
         switch(c) {
             case 'T':
                 if (sscanf(optarg, "%f/%d/%f/%f", &t, &tmark, &t0, &t1) == 4) {
