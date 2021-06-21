@@ -135,13 +135,13 @@ Examples:
 ### `sacamp`
 
 ```
-Get amplitude at the given time
+Get amplitude at the given arrival time
 
 Usage:
   sacamp -Tt[tmark/t0/t1] sacfiles
 
   Options:
-    -T    specify travel time and/or time window (tmark/begin time (sec)/end time (sec))
+    -T    specify arrival time [and time window (tmark/begin time (sec)/end time (sec)) to read data]
     -h    show usage.
 
 Examples:

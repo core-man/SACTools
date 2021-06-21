@@ -19,7 +19,7 @@
 void usage(void);
 
 void usage() {
-    fprintf(stderr, "Get amplitude at the given time.                   \n");
+    fprintf(stderr, "Get amplitude at the given arrival time.           \n");
     fprintf(stderr, "                                                   \n");
     fprintf(stderr, "Usage:                                             \n");
     fprintf(stderr, "  sacamp -Tt[/tmark/ts/tw]                         \n");
